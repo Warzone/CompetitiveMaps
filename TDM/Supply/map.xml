@@ -1,0 +1,70 @@
+<map proto="1.4.0">
+<name>Supply</name>
+<version>1.2.1</version>
+<objective>Kill the opposing team as many times as possible in 12 minutes!</objective>
+<gamemode>tdm</gamemode>
+<authors>
+    <author uuid="c29bef37-d8e2-42a9-b746-04f2df78f374"/> <!-- Legoche -->
+    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383"/> <!-- Xuph -->
+</authors>
+<teams>
+    <team id="red"  color="dark red"  min="1" max="8" max-overfill="16">Red</team>
+    <team id="cyan" color="dark aqua" min="1" max="8" max-overfill="16">Cyan</team>
+</teams>
+<time result="score">12m</time>
+<score>
+    <kills>1</kills>
+</score>
+<spawns>
+    <spawn team="red" kit="default">
+        <regions yaw="-45">
+            <point>-22.5, 98, -50.5</point>
+        </regions>
+    </spawn>
+    <spawn team="cyan" kit="default">
+        <regions yaw="135">
+            <point>23.5,98,51.5</point>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="90">
+            <point>0.5,150,0.5</point>
+        </regions>
+    </default>
+</spawns>
+<kits>
+    <kit id="default">
+        <item slot="0" unbreakable="true">stone sword</item>
+        <item slot="1" unbreakable="true">bow</item>
+        <item slot="2" amount="1">golden apple</item>
+        <item slot="5" amount="16">golden carrot</item>
+        <item slot="8" amount="16">arrow</item>
+        <helmet unbreakable="true">iron helmet</helmet>
+        <chestplate unbreakable="true" team-color="true">leather chestplate</chestplate>
+        <leggings unbreakable="true" team-color="true">leather leggings</leggings>
+        <boots unbreakable="true">iron boots</boots>
+        <effect amplifier="3" duration="3">damage resistance</effect>
+        <effect amplifier="1" duration="oo">night vision</effect>
+    </kit>
+</kits>
+<regions>
+    <apply block="never"/>
+</regions>
+<itemremove>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>golden carrot</item>
+    <item>iron helmet</item>
+    <item>leather chestplate</item>
+    <item>leather leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item>golden apple</item>
+    </kill-reward>
+</kill-rewards>
+<gamerules>
+    <doDaylightCycle>false</doDaylightCycle>
+</gamerules>
+</map>

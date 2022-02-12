@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<name>Africa</name>
+<version>1.0.3</version>
+<objective>Capture and place both of the enemies wools!</objective>
+<gamemode>ctw</gamemode>
+<time results="objective">45m</time>
+<authors>
+    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383"/> <!--  Xuph  -->
+</authors>
+<contributors>
+    <contributor uuid="bbfac3db-dd46-4996-b936-0e2432f33285" contribution="Feedback + PGM xml"/> <!-- Valky -->
+    <contributor uuid="e2d2c2c6-cea9-4510-9ab2-a091b5605b30" contribution="OA xml"/> <!-- Ruediger_LP -->
+</contributors>
+<teams>
+    <team id="red-team" color="dark red" max="8">Red</team>
+    <team id="blue-team" color="blue" max="8">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <item slot="0" material="wood sword" unbreakable="true"/>
+        <item slot="1" material="bow" unbreakable="true"/>
+        <item slot="2" material="wood pickaxe" unbreakable="true"/>
+        <item slot="3" material="wood axe" unbreakable="true"/>
+        <item slot="28" material="arrow" amount="24"/>
+        <item slot="7" material="golden carrot" amount="64"/>
+        <item slot="8" material="golden apple"/>
+        <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+        <chestplate material="chainmail chestplate" enchantment="protection_projectile:2" unbreakable="true"/>
+        <leggings material="chainmail leggings" unbreakable="true"/>
+        <boots material="iron boots" unbreakable="true" enchantment="protection_fall:1"/>
+        <potion amplifier="255" duration="6s">resistance</potion>
+    </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <helmet material="leather helmet" color="AF002A" unbreakable="true" />
+    </kit>
+    <kit id="blue-kit" parents="spawn-kit">
+        <helmet material="leather helmet" color="6E6EF9" unbreakable="true" />
+    </kit>
+</kits>
+<spawns>
+    <spawn team="red-team" kit="red-kit">
+        <region yaw="180">
+            <point>198.5,19.25,-202.5</point>
+        </region>
+    </spawn>
+    <spawn team="blue-team" kit="blue-kit">
+        <region yaw="0">
+            <point>198.5,19.25,-318.5</point>
+        </region>
+    </spawn>
+    <default>
+        <region yaw="90">
+            <point>198.5,10,-260.5</point>
+        </region>
+    </default>
+</spawns>
+<wools>
+    <wool team="red-team" color="pink" location="251.5,16,-347.5">
+        <monument><block>201,10,-210</block></monument>
+    </wool>
+    <wool team="red-team" color="purple" location="145.5,16,-347.5">
+        <monument><block>195,10,-210</block></monument>
+    </wool>
+    <wool team="blue-team" color="lime" location="145.5,16,-173.5">
+        <monument><block>195,10,-312</block></monument>
+    </wool>
+    <wool team="blue-team" color="yellow" location="251.5,16,-173.5">
+        <monument><block>201,10,-312</block></monument>
+    </wool>
+</wools>
+<filters>
+    <not id="not-void">
+        <any>
+            <material>mob spawner</material>
+            <material>gold plate</material>
+            <void/>
+        </any>
+    </not>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
+<regions>
+    <union id="spawns">
+        <rectangle id="red-spawn" min="190,-204" max="207,-215"/>
+        <rectangle id="blue-spawn" min="207,-306" max="190,-317"/>
+    </union>
+    <union id="bridges">
+        <rectangle min="150,-195" max="163,-326"/> <!-- lime purple -->
+        <rectangle min="234,-282" max="207,-239"/> <!-- mid lime purple-->
+        <rectangle min="234,-195" max="247,-326"/> <!-- yellow pink -->
+        <rectangle min="163,-239" max="190,-282"/> <!-- mid yellow pink -->
+    </union>
+    <union id="blues-woolrooms"> <!--  blue defends  -->
+        <cuboid id="pink-woolroom" min="242,0,-338" max="255,200,-351"/>
+        <cuboid id="purple-woolroom" min="155,0,-338" max="142,200,-351"/>
+    </union>
+    <union id="reds-woolrooms"> <!--  red defends  -->
+        <cuboid id="lime-woolroom" min="155,0,-183" max="142,200,-170"/>
+        <cuboid id="yellow-woolroom" min="242,0,-183" max="255,200,-170"/>
+    </union>
+    <union id="wool-jumppads">
+        <cuboid min="246.5,16,-176.5" max="248.5,17,-178.5"/><!--yellow-->
+        <cuboid min="148.5,16,-176.5" max="150.5,17,-178.5"/><!--lime-->
+        <cuboid min="246.5,16,-342.5" max="248.5,17,-344.5"/><!--pink-->
+        <cuboid min="148.5,16,-342.5" max="150.5,17,-344.5"/><!--purple-->
+    </union>
+
+    <apply enter="only-blue" region="reds-woolrooms" message="You cannot enter your own wool room!"/>
+    <apply enter="only-red" region="blues-woolrooms" message="You cannot enter your own wool room!"/>
+    <apply block="always" region="bridges"/>
+    <apply block="never" region="spawns" message="You cannot edit the spawns!"/>
+    <apply block="only-red" region="blues-woolrooms" message="You cannot edit the wool rooms!"/>
+    <apply block="only-blue" region="reds-woolrooms" message="You cannot edit the wool rooms!"/>
+    <apply block="not-void" region="everywhere" message="You cannot modify the void!"/>
+    <apply region="wool-jumppads" velocity="0,2.5,0"/>
+</regions>
+<destroyables materials="stained glass" completion="0%" required="false" show="false" mode-changes="true">
+    <destroyable name="monu" owner="blue-team">
+        <region><cuboid min="150,0,-326" max="247,1,-195"/></region>
+    </destroyable>
+</destroyables>
+<modes>
+    <mode after="0s" material="air" name="Match start!"/>
+</modes>
+<portals>
+    <portal x="@251.5" y="@16" z="@-173.5" yaw="@135"><!--yellow-->
+        <region>
+            <cuboid min="248,45,-172" max="247,49,-171"/>
+        </region>
+    </portal>
+    <portal x="@145.5" y="@16" z="@-173.5" yaw="@-135"><!--lime-->
+        <region>
+            <cuboid min="150,45,-172" max="149,49,-171"/>
+        </region>
+    </portal>
+    <portal x="@251.5" y="@16" z="@-347.5" yaw="@45"><!--pink-->
+        <region>
+            <cuboid min="248,45,-349" max="247,49,-350"/>
+        </region>
+    </portal>
+    <portal x="@145.5" y="@16" z="@-347.5" yaw="@-45"><!--purple-->
+        <region>
+            <cuboid min="150,45,-349" max="149,49,-350"/>
+        </region>
+    </portal>
+</portals>
+<itemremove>
+    <item>leather helmet</item>
+    <item>chainmail chestplate</item>
+    <item>chainmail leggings</item>
+    <item>leather boots</item>
+    <item>arrow</item>
+    <item>sand</item>
+    <item>sandstone</item>
+    <item>gravel</item>
+    <item>hard clay</item>
+    <item>cactus</item>
+    <item>log</item>
+    <item>log 2</item>
+    <item>spruce wood stairs</item>
+    <item>birch wood stairs</item>
+    <item>step</item>
+    <item>quartz</item>
+    <item>quartz stairs</item>
+    <item>sandstone stairs</item>
+    <item>wood step:2</item>
+    <item>fence</item>
+    <item>hay block</item>
+    <item>water lily</item>
+    <item>wood:2</item>
+    <item>cobble wall</item>
+    <item>cauldron</item>
+    <item>bed</item>
+    <item>soul sand</item>
+    <item>wool:0</item>
+    <item>wool:11</item>
+    <item>wool:14</item>
+    <item>wool:15</item>
+    <item>ladder</item>
+    <item>wood plate</item>
+    <item>fence gate</item>
+</itemremove>
+<toolrepair>
+    <tool>wood sword</tool>
+    <tool>bow</tool>
+    <tool>wood pickaxe</tool>
+    <tool>wood axe</tool>
+</toolrepair>
+<maxbuildheight>22</maxbuildheight>
+<kill-rewards>
+    <kill-reward>
+        <item material="golden apple" amount="1"/>
+        <item material="arrow" amount="16"/>
+    </kill-reward>
+    <kill-reward filter="only-red">
+        <item amount="16" damage="14">stained clay</item>
+    </kill-reward>
+    <kill-reward filter="only-blue">
+        <item amount="16" damage="11">stained clay</item>
+    </kill-reward>
+</kill-rewards>
+</map>

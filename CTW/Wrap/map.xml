@@ -1,0 +1,201 @@
+<map proto="1.4.0">
+<name>Wrap</name>
+<version>1.0.2</version>
+<objective>Capture the enemy team's wool to win!</objective>
+<gamemode>ctw</gamemode>
+<authors>
+    <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!--  DoomyBoy  -->
+</authors>
+<teams>
+    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5">Blue</team>
+</teams>
+<time result="objectives">20m</time>
+<kits>
+    <kit id="spawn" force="true">
+        <clear/> <!-- See itemkeep below. Allows golden apples to be dropped between teammates but not by enemies on death. -->
+        <item slot="0" unbreakable="true">iron sword</item>
+        <item slot="1" unbreakable="true">bow</item>
+        <item slot="2" unbreakable="true">iron pickaxe</item>
+        <item slot="3" enchantment="dig speed:1">stone axe</item>
+        <item slot="4" amount="64">golden carrot</item>
+        <item slot="5" amount="8" damage="1">wood</item>
+        <item slot="6" amount="8">nether brick</item>
+        <item slot="7" amount="24">arrow</item>
+        <leggings unbreakable="true">chainmail leggings</leggings>
+    </kit>
+    <kit id="red-kit" parents="spawn">
+        <helmet unbreakable="true" color="993333">leather helmet</helmet>
+        <chestplate unbreakable="true" enchantment="protection projectile:1" color="993333">leather chestplate</chestplate>
+        <boots unbreakable="true" color="993333">leather boots</boots>
+    </kit>
+    <kit id="blue-kit" parents="spawn">
+        <helmet unbreakable="true" color="334CB2">leather helmet</helmet>
+        <chestplate unbreakable="true" color="334CB2" enchantment="protection projectile:1">leather chestplate</chestplate>
+        <boots unbreakable="true" color="334CB2">leather boots</boots>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="-90">
+            <point>-52.5,37,-67.5</point>
+        </region>
+    </default>
+    <spawn team="blue" kit="blue-kit">
+        <region yaw="180">
+            <point>-99.5,14,-56.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="red-kit">
+        <region yaw="0">
+            <point>-5.5,14,-78.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <deny id="only-blue">
+        <team>red</team>
+    </deny>
+    <deny id="only-red">
+        <team>blue</team>
+    </deny>
+    <any id="materials">
+        <material>nether brick</material>
+        <material>wool:9</material>
+        <material>stained glass:9</material>
+        <material>carpet:9</material>
+        <material>step</material>
+        <material>nether brick stairs</material>
+        <material>chest</material>
+        <material>wood:2</material>
+        <material>double step:9</material>
+        <material>stained clay:15</material>
+    </any>
+    <all id="in-orange-wool">
+        <not>
+            <filter id="materials"/>
+        </not>
+        <team>blue</team>
+    </all>
+    <all id="in-cyan-wool">
+        <not>
+            <filter id="materials"/>
+        </not>
+        <team>red</team>
+    </all>
+    <not id="no-spawners">
+        <any>
+            <material>mob spawner</material>
+            <material>gold plate</material>
+            <material>iron plate</material>
+        </any>
+    </not>
+    <not id="no-void">
+        <void/>
+    </not>
+</filters>
+<regions>
+    <union id="spawns">
+        <cuboid id="blue-spawn" min="-9,9,-81" max="-2,20,-65"/>
+        <rectangle id="blue-spawn-exit" min="-103,-83" max="-96,-76"/>
+        <cuboid id="red-spawn" min="-96,9,-54" max="-103,20,-70"/>
+        <rectangle id="red-spawn-exit" min="-2,-52" max="-9,-59"/>
+    </union>
+    <union id="wool-rooms">
+        <cuboid id="cyan-wool" min="-96,0,-66" max="-103,12,-55"/>
+        <cuboid id="orange-wool" min="-9,0,-69" max="-1,12,-80"/>
+    </union>
+    <negative id="no-build">
+        <union id="build-region">
+            <rectangle min="-21,-78" max="-26,-71"/>
+            <rectangle min="-21,-78" max="-14,-85"/>
+            <rectangle min="-23,-85" max="-41,-92"/>
+            <rectangle min="-33,-78" max="-44,-58"/>
+            <rectangle min="-41,-92" max="-61,-77"/>
+            <rectangle min="-61,-57" max="-44,-78"/>
+            <rectangle min="-72,-57" max="-61,-77"/>
+            <rectangle min="-64,-43" max="-44,-58"/>
+            <rectangle min="-64,-43" max="-91,-50"/>
+            <rectangle min="-84,-57" max="-91,-50"/>
+            <rectangle min="-84,-57" max="-79,-64"/>
+            <cuboid min="-16,7,-49" max="-17,9,-48"/>
+            <cuboid min="-88,7,-86" max="-89,9,-87"/>
+            <region id="wool-rooms"/>
+            <region id="spawns"/>
+        </union>
+    </negative>
+    <!-- Applied -->
+    <apply enter="only-blue" message="Only Blue may enter this wool room!" region="orange-wool"/>
+    <apply enter="only-red" message="Only Red may enter this wool room!" region="cyan-wool"/>
+    <apply block="never" message="You may not modify the spawn exits!" region="spawns"/>
+    <apply block="in-cyan-wool" message="You may not break or place this block here!" region="cyan-wool"/>
+    <apply block="in-orange-wool" message="You may not break or place this block here!" region="orange-wool"/>
+    <apply block-place="no-void" message="You may not modify blocks outside the playing area!" region="no-build"/>
+    <apply block-break="no-spawners" message="You may not edit the spawners!"/>
+</regions>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>iron pickaxe</tool>
+    <tool>stone axe</tool>
+</toolrepair>
+<itemremove>
+    <item>golden carrot</item>
+    <item>wood</item>
+    <item>nether brick</item>
+    <item>nether fence</item>
+    <item>nether brick stairs</item>
+    <item>step</item>
+    <item>wool:11</item>
+    <item>wool:14</item>
+    <item>iron chestplate</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>leather boots</item>
+    <item>wood plate</item>
+    <item>wood button</item>
+    <item>spruce fence</item>
+    <item>spruce fence gate</item>
+    <item>wood step</item>
+    <item>spruce door</item>
+    <item>spruce wood stairs</item>
+    <item>workbench</item>
+</itemremove>
+<kill-reward>
+    <item amount="6">arrow</item>
+    <item amount="4">nether brick</item>
+    <item>golden apple</item>
+</kill-reward>
+<itemkeep> <!-- See <clear/> in spawn kit -->
+    <item>golden apple</item>
+</itemkeep>
+<wools>
+    <wool team="blue" color="orange" location="-5.5,3,-74.5">
+        <monument>
+            <block>-99.5,6,-82.5</block>
+        </monument>
+    </wool>
+    <wool team="red" color="cyan" location="-99.5,3,-60.5">
+        <monument>
+            <block>-5.5,6,-52.5</block>
+        </monument>
+    </wool>
+</wools>
+<destroyables materials="stained glass" name="monu" completion="0%" required="false" show="false" mode-changes="true">
+    <destroyable owner="red">
+       <region>
+           <cuboid min="-103,0,-43" max="-2,1,-92"/>
+       </region>
+    </destroyable>
+    <destroyable owner="blue">
+       <region>
+           <cuboid min="-103,0,-43" max="-2,1,-92"/>
+       </region>
+    </destroyable>
+</destroyables>
+<modes>
+    <mode after="1s" material="air"/>
+</modes>
+<maxbuildheight>12</maxbuildheight>
+</map>

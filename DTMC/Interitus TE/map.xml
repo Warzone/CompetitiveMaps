@@ -1,0 +1,159 @@
+<map proto="1.4.0">
+<time overtime="1m" max-overtime="15m">45m</time>
+<name>Interitus TE</name>
+<version>1.7.5</version>
+<objective>Leak lava from the enemy's obsidian core into the void.</objective>
+<gamemode>dtc</gamemode>
+<authors>
+    <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8"/> <!-- Plastix -->
+    <author uuid="1379cb6e-f291-4498-9807-e636f9674ac0"/> <!-- SH4D0W_HAWK -->
+    <author uuid="82c796a5-c033-43be-af30-fa06496995f9"/> <!-- IM_A_H0B0 -->
+</authors>
+<contributors>
+    <contributor uuid="2553e6f2-3a2c-440b-a6a3-39e3df7fe3ff" contribution="Help and Feedback"/> <!-- Khazhyk -->
+</contributors>
+<teams>
+    <team id="blue" color="blue" max="8">Blue</team>
+    <team id="red" color="dark red" max="8">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <item slot="0" unbreakable="true" material="iron sword"/>
+        <item slot="1" unbreakable="true" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="28" material="arrow"/>
+        <item slot="2" unbreakable="true" material="iron pickaxe">
+            <enchantment>efficiency</enchantment>
+        </item>
+        <item slot="3" unbreakable="true" material="iron axe"/>
+        <item slot="4" amount="64" damage="1" material="wood"/>
+        <item slot="5" amount="32" damage="1" material="wood"/>
+        <item slot="7" material="golden apple"/>
+        <item slot="8" amount="64" material="golden carrot"/>
+    </kit>
+    <kit id="kill-reward">
+        <effect amplifier="2" duration="5">regeneration</effect>
+    </kit>
+</kits>
+<spawns>
+    <default yaw="90">
+        <region>
+            <cuboid min="-84,33.5,1" max="-83,33.5,0"/>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit" yaw="0">
+        <region>
+            <point>0.5,8,-98.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit" yaw="180">
+        <region>
+            <point>0.5,8,99.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
+    <deny id="deny-beacon">
+        <material>beacon</material>
+    </deny>
+    <deny id="no-stone">
+        <material>stone</material>
+    </deny>
+    <material id="only-tnt">tnt</material>
+</filters>
+<regions>
+    <negative id="playable-inverse">
+        <rectangle id="playable" min="61,53" max="-60,-52"/>
+    </negative>
+    <!-- e = enter | b = block | r = re-entry -->
+    <union id="tunnels">
+        <cuboid id="red-tunnel-e" min="4,-oo,102" max="-3,11,49"/>
+        <rectangle id="red-tunnel-b" min="4,102" max="-3,49"/>
+        <rectangle id="red-tunnel-r" min="4,102" max="-3,65"/>
+        <cuboid id="blue-tunnel-e" min="-3,-oo,-101" max="4,11,-48"/>
+        <rectangle id="blue-tunnel-b" min="-3,-101" max="4,-48"/>
+        <rectangle id="blue-tunnel-r" min="-3,-101" max="4,-58"/>
+    </union>
+    <above id="tnt-height-limit" y="40"/>
+    <above id="above-height-limit" y="41"/>
+    <!-- Applications -->
+    <apply block="never" region="above-height-limit" message="You may not break or place any blocks at this height!"/>
+    <apply block-place="only-tnt" region="tnt-height-limit" message="Only TNT may be placed at this height!"/>
+    <apply block="never" message="You may not edit outside the playable area!" region="playable-inverse"/>
+    <apply block="never" message="You may not modify the spawns!">
+        <region>
+            <region id="blue-tunnel-b"/>
+            <region id="red-tunnel-b"/>
+        </region>
+    </apply>
+    <apply enter="never" message="You may not re-enter the spawns!">
+        <region>
+            <region id="blue-tunnel-r"/>
+            <region id="red-tunnel-r"/>
+        </region>
+    </apply>
+    <apply enter="only-blue" message="You may not enter the enemy spawn tunnel!" region="blue-tunnel-e"/>
+    <apply enter="only-red" message="You may not enter the enemy spawn tunnel!" region="red-tunnel-e"/>
+    <apply block-place="no-stone"/>
+    <apply use="deny-beacon"/>
+</regions>
+<destroyables materials="ender stone" completion="100%" name="Monument">
+    <destroyable owner="blue">
+        <region>
+            <cuboid min="23,17,-40" max="27,22,-35"/>
+        </region>
+    </destroyable>
+    <destroyable owner="red">
+        <region>
+            <cuboid min="-23,17,40" max="-27,22,35"/>
+        </region>
+    </destroyable>
+</destroyables>
+<cores material="obsidian" leak="3" name="Core" modes="gold-core ice-core">
+    <core team="blue">
+        <region>
+            <cuboid min="-27,16,-34" max="-22,22,-40"/>
+        </region>
+    </core>
+    <core team="red">
+        <region>
+            <cuboid min="28,16,34" max="22,22,40"/>
+        </region>
+    </core>
+</cores>
+<modes>
+    <mode id="gold-core" after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+    <mode id="ice-core" after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+</modes>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>iron pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>bow</tool>
+    <tool>arrow</tool>
+</toolrepair>
+<itemremove>
+    <item>cobblestone</item>
+    <item>clay ball</item>
+    <item>beacon</item>
+    <item>obsidian</item>
+    <item>gold block</item>
+    <item>packed ice</item>
+    <item>ender stone</item>
+    <item>log</item>
+    <item>wood</item>
+    <item>golden apple</item>
+    <item>golden carrot</item>
+</itemremove>
+<kill-reward>
+    <kit id="kill-reward"/>
+</kill-reward>
+<tnt>
+    <dispenser-tnt-limit>0</dispenser-tnt-limit>
+    <dispenser-tnt-multiplier>0</dispenser-tnt-multiplier>
+</tnt>
+<respawn delay="4s" auto="true"/>
+</map>

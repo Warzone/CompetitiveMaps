@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map proto="1.4.0">
+<name>Rendezvous Champions</name>
+<version>1.1.0</version>
+<objective>Destroy the enemy's monument(s) to win!</objective>
+<gamemode>dtm</gamemode>
+<authors>
+    <author uuid="44df6b20-168f-4389-b7ac-434518207c2f"/> <!-- ParaPenguin -->
+    <author uuid="d9b4ffbc-11d0-453a-a93f-82dc59fca4b6"/> <!-- gobernment -->
+    <author uuid="c29bef37-d8e2-42a9-b746-04f2df78f374"/> <!-- Legoche -->
+    <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800"/> <!-- Fouled -->
+</authors>
+<teams>
+    <team id="green" color="green" min="1" max="8" max-overfill="8">Green</team>
+    <team id="blue"  color="blue"  min="1" max="8" max-overfill="8">Blue</team>
+</teams>
+<spawns>
+    <spawn team="green" kit="default">
+        <regions yaw="90">
+            <point>-157.5,12,-13.5</point>
+        </regions>
+    </spawn>
+    <spawn team="blue" kit="default">
+        <regions yaw="-90">
+            <point>-333.5,12,-13.5</point>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="180">
+            <point>-245,30,56.5</point>
+        </regions>
+    </default>
+</spawns>
+<kits>
+    <kit id="default">
+        <item slot="0" unbreakable="true">iron sword</item>
+        <item slot="1" unbreakable="true" enchantment="infinity:1">bow</item>
+        <item slot="2" unbreakable="true">diamond pickaxe</item>
+        <item slot="3" amount="3">golden apple</item>
+        <item slot="4" amount="64">log</item>
+        <item slot="5" amount="48">glass</item>
+        <item slot="6" amount="48">apple</item>
+        <item slot="27" amount="1">arrow</item>
+        <helmet unbreakable="true" team-color="true">leather helmet</helmet>
+    </kit>
+</kits>
+<kill-rewards>
+    <kill-reward>
+        <item amount="1" material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
+<destroyables owner="green" completion="100%" sparks="true">
+    <destroyable name="Left" region="green-left-monument" materials="obsidian"/>
+    <destroyable name="Right" region="green-right-monument" materials="obsidian"/>
+</destroyables>
+    <destroyables owner="blue" completion="100%" sparks="true">
+    <destroyable name="Left" region="blue-left-monument" materials="obsidian"/>
+    <destroyable name="Right" region="blue-right-monument" materials="obsidian"/>
+</destroyables>
+<filters>
+    <team id="only-green">green</team>
+    <team id="only-blue">blue</team>
+</filters>
+<regions>
+    <union id="spawn-protections">
+        <rectangle id="green-spawn" min="-167,-20" max="-148,-7"/>
+        <rectangle id="blue-spawn"  min="-343,-20" max="-324,-7"/>
+    </union>
+    <union id="monuments">
+        <block id="green-left-monument">-88, 16, -43</block>
+        <block id="green-right-monument">-88, 16, 15</block>
+        <block id="blue-left-monument">-404, 16, 15</block>
+        <block id="blue-right-monument">-404, 16, -43</block>
+    </union>
+    <union id="monument-bridges">
+        <rectangle id="green-monument-bridge" min="-107,-37" max="-77,10"/>
+        <rectangle id="blue-monument-bridge"  min="-414,-37" max="-384,10"/>
+    </union>
+    <negative id="not-map">
+        <rectangle id="map" min="-414,-48" max="-77,21"/>
+    </negative>
+    <apply region="not-map"   block="never"              message="You may not edit outside the map!"/>
+    <apply block="never"      region="spawn-protections" message="You are not allowed to modify terrain here."/>
+    <apply enter="only-green" region="green-spawn"       message="You may not enter the enemy spawn."/>
+    <apply enter="only-blue"  region="blue-spawn"        message="You may not enter the enemy spawn."/>
+    <apply block="never"      region="monument-bridges"  message="You may not build over the void."/>
+</regions>
+<itemremove>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>diamond pickaxe</item>
+    <item>leather helmet</item>
+    <item>apple</item>
+    <item>golden apple</item>
+    <item>arrow</item>
+    <item>log</item>
+    <item>wood</item>
+    <item>glass</item>
+    <item>obsidian</item>
+</itemremove>
+<gamerules>
+    <doFireTick>true</doFireTick>
+</gamerules>
+<maxbuildheight>93</maxbuildheight>
+</map>

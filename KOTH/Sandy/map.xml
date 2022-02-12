@@ -1,0 +1,124 @@
+<map proto="1.4.2">
+<name>Sandy</name>
+<version>1.0.7</version>
+<objective>Be the first to 750 points</objective>
+<gamemode>koth</gamemode>
+<authors>
+    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383" /> <!-- XUPH -->
+    <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800" /> <!-- Fouled -->
+</authors>
+<teams>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="4">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="4" amplifier="10">resistance</effect>
+        <effect duration="4" amplifier="10">regeneration</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="0">
+            <cylinder base="-891.5,178,-696.5" radius="1" height="1" />
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="-90">
+            <block>-921.5,155.75,-664.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="90">
+            <block>-861.5,155.75,-664.5</block>
+        </region>
+    </spawn>
+</spawns>
+<regions>
+    <apply block="never" use="never"/>
+</regions>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+        <hill name="Point A">
+            <capture>
+                <cuboid min="-888,152,-685" max="-895,155,-690"/>
+                <cuboid min="-889,152,-684" max="-894,155,-691"/>
+            </capture>
+            <progress>
+                <cuboid min="-888,152,-685" max="-895,155,-690"/>
+                <cuboid min="-889,152,-684" max="-894,155,-691"/>
+            </progress>
+            <captured>
+                <cuboid min="-888,152,-685" max="-895,155,-690"/>
+                <cuboid min="-889,152,-684" max="-894,155,-691"/>
+                <cuboid min="-887,152,-696" max="-896,173,-693"/>
+            </captured>
+        </hill>
+        <hill name="Middle">
+            <capture>
+                <cuboid min="-889,144,-661" max="-894,147,-668"/>
+                <cuboid min="-895,144,-667" max="-888,147,-662"/>
+            </capture>
+            <progress>
+                <cuboid min="-889,144,-661" max="-894,147,-668"/>
+                <cuboid min="-895,144,-667" max="-888,147,-662"/>
+            </progress>
+            <captured>
+                <cuboid min="-889,144,-661" max="-894,147,-668"/>
+                <cuboid min="-895,144,-667" max="-888,147,-662"/>
+            </captured>
+        </hill>
+        <hill name="Point B">
+            <capture>
+                <cuboid min="-889,152,-638" max="-894,155,-645"/>
+                <cuboid min="-888,152,-639" max="-895,155,-644"/>
+            </capture>
+            <progress>
+                <cuboid min="-889,152,-638" max="-894,155,-645"/>
+                <cuboid min="-888,152,-639" max="-895,155,-644"/>
+            </progress>
+            <captured>
+                <cuboid min="-889,152,-638" max="-894,155,-645"/>
+                <cuboid min="-888,152,-639" max="-895,155,-644"/>
+                <cuboid min="-887,152,-636" max="-896,173,-633"/>
+            </captured>
+        </hill>
+    </hills>
+</king>
+<score>
+    <limit>750</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="5" material="arrow"/>
+</kill-reward>
+<respawn delay="5s" auto="true" blackout="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>
