@@ -5,4 +5,4 @@ Warzone does not aim to host or manage automated "ranked" matches, nor does it h
 
 ## License
 
-Any map in this repository is provided "as-is" with no guarantees (explicit or implied) regarding their commercial use. Files for maps have either been made available by MCResourcePile or provided publicly by other organizations, such as Overcast Community's scrimmage-maps repository. 
+Any map in this repository is provided "as-is" with no guarantees (explicit or implied) regarding their commercial use. Files for maps have either been made available by MCResourcePile or provided publicly by other organizations, such as Overcast Community's scrimmage-maps repository. You are strongly encouraged to contact individual map authors for permission to use any of these maps commercially.
