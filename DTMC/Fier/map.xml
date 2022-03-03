@@ -4,8 +4,8 @@
 <objective>Leak the other team's core to win!</objective>
 <gamemode>dtc</gamemode>
 <authors>
-    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/>
-    <author uuid="aa4b525d-e0ad-4847-bb18-2a6f3a2d6a13"/>
+    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
+    <author uuid="aa4b525d-e0ad-4847-bb18-2a6f3a2d6a13"/> <!-- Shrooomtastic -->
 </authors>
 <cores material="obsidian" leak="2">
     <core team="blue" region="blue-core"/>
