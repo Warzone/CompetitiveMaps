@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Hammerhead</name>
-<version>1.4.4</version>
+<version>1.4.6</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <gamemode>ctf</gamemode>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
@@ -23,9 +23,9 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="12" material="arrow"/>
+        <item slot="8" amount="14" material="arrow"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="3" amplifier="255">resistance</effect>
@@ -92,7 +92,7 @@
     </union>
     <apply block="never"/>
 </regions>
-<flags flag-proximity-metric="none" net-proximity-metric="none">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="green-flag"
           name="Green Flag"
           owner="green"
@@ -151,7 +151,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="5" material="arrow"/>
+    <item amount="6" material="arrow"/>
 </kill-reward>
 <respawn delay="8s" auto="true" blackout="true"/>
 <hunger>
