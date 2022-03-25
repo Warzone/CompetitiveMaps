@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<map proto="1.4.3">
+<map proto="1.4.2">
 <name>Golden Drought V</name>
 <version>1.0.1</version>
 <objective>Capture the enemy wool!</objective>
@@ -22,7 +22,7 @@
         <item slot="4" amount="24">cooked chicken</item>
         <item slot="5" amount="24" damage="2">wood</item>
         <item slot="6" amount="64">sandstone</item>
-	    <item slot="7" amount="2">golden apple</item>
+        <item slot="7" amount="2">golden apple</item>
         <item slot="28" amount="24">arrow</item>
         <potion duration="5" amplifier="3">heal</potion>
         <potion duration="5" amplifier="3">damage resistance</potion>
@@ -54,9 +54,9 @@
     <not id="no-void">
         <void/>
     </not>
-<all id="only-gold">
-	<material>gold block</material>
-</all>
+    <all id="only-gold">
+        <material>gold block</material>
+    </all>
 </filters>
 <regions>
     <apply block-break="only-gold" block-place="never" message="You may only break gold blocks in spawn!">
@@ -93,9 +93,9 @@
         <region>
             <negative>
                 <union id="void">
-                        <rectangle min="8,-1309" max="65,-1246"/>
-			<cuboid min="81,14,-1260" max="86,20,-1269"/>
-			<cuboid min="-8,14,-1286" max="-13,20,-1295"/>
+                    <rectangle min="8,-1309" max="65,-1246"/>
+                    <cuboid min="81,14,-1260" max="86,20,-1269"/>
+                    <cuboid min="-8,14,-1286" max="-13,20,-1295"/>
                 </union>
             </negative>
         </region>
@@ -126,8 +126,8 @@
     <kill-reward>
         <item amount="1">golden apple</item>
         <item amount="12">arrow</item>
-	<item amount="32">sandstone</item>
-	<item amount="12" damage="2">wood</item>
+        <item amount="32">sandstone</item>
+        <item amount="12" damage="2">wood</item>
     </kill-reward>
 </kill-rewards>
 </map>
