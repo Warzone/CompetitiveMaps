@@ -3,7 +3,7 @@
 <version>1.1.2</version>
 <objective>Capture the enemy wool!</objective>
 <gamemode>ctw</gamemode>
-<time result="objectives" max-overtime="10m" overtime="10m">25m</time>
+<time>20m</time>
 <authors>
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
 </authors>
