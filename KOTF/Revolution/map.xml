@@ -3,7 +3,6 @@
 <version>1.1.10</version>
 <objective>Hold the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
-<time result="score">20m</time>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </authors>

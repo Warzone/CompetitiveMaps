@@ -6,7 +6,7 @@
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
 </authors>
-<time result="score">20m</time>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>

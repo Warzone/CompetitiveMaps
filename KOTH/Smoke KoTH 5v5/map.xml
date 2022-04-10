@@ -3,7 +3,6 @@
 <version>1.2.13</version>
 <objective>Be the first team to reach 750 points!</objective>
 <gamemode>koth</gamemode>
-<time result="score">20m</time>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
