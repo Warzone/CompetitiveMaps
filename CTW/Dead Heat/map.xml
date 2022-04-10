@@ -17,8 +17,8 @@
    <rule>Each player may only carry one wool at a time.</rule>
 </rules>
 <teams>
-    <team id="purple" color="dark purple" min="5" max="5">Purple</team>
-    <team id="cyan" color="dark aqua" min="5" max="5">Cyan</team>
+    <team id="purple" color="dark purple" min="6" max="8">Purple</team>
+    <team id="cyan" color="dark aqua" min="6" max="8">Cyan</team>
 </teams>
 <blitz>
     <lives>1</lives> 
