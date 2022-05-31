@@ -1,0 +1,121 @@
+<map proto="1.4.2">
+<name>Remnant</name>
+<version>1.0.2</version>
+<objective>Capture the enemy flag.</objective>
+<gamemode>ctf</gamemode>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<authors>
+    <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
+</authors>
+<teams>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="4" amplifier="255">resistance</effect>
+        <effect duration="4" amplifier="255">regeneration</effect>
+    </kit>
+    <kit id="flag-pickup" force="true">
+        <effect>slowness</effect>
+    </kit>
+    <kit id="flag-reset" force="true">
+        <effect duration="0" amplifier="0">slowness</effect>
+    </kit>
+</kits>
+<spawns>
+    <default region="spawn-obs" yaw="90"/>
+    <spawn team="blue" kit="spawn-kit" region="spawn-blue" yaw="180"/>
+    <spawn team="red" kit="spawn-kit" region="spawn-red" yaw="0"/>
+</spawns>
+<filters>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
+    <time id="flag-respawns">0</time>
+    <deny id="no-use">
+        <material>trap door</material>
+    </deny>
+</filters>
+<regions>
+    <cylinder id="spawn-obs" base="-82.5,10,64.5" radius="0.5" height="1"/>
+    <cylinder id="spawn-red" base="-105.5,7,34.5" radius="0.5" height="0.5"/>
+    <cylinder id="spawn-blue" base="-105.5,7,94.5" radius="0.5" height="0.5"/>
+    <cuboid id="blue-net" min="-107,5,81" max="-104,9,84"/>
+    <cuboid id="red-net" min="-104,5,48" max="-107,9,45"/>
+    <cuboid id="gap-spawn-drop" min="-120.4,6.5,64.4" max="-120.6,6.5,64.6"/>
+    <cuboid id="gap-spawn-activation" min="-122,5,66" max="-119,9,63"/>
+    <cuboid id="blue-spawn-drop" min="-105.4,8.5,73.4" max="-105.6,8.5,73.6"/>
+    <cuboid id="blue-spawn-activation" min="-107,7,75" max="-104,11,72"/>
+    <cuboid id="red-spawn-drop" min="-105.4,8.5,55.4" max="-105.6,8.5,55.6"/>
+    <cuboid id="red-spawn-activation" min="-104,7,57" max="-107,11,54"/>
+    <apply block="never" use="no-use"/>
+</regions>
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
+    <flag id="blue-flag"
+          name="Blue Flag"
+          owner="blue"
+          color="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-reset">
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-105.5,6,82.5</post>
+    </flag>
+    <flag id="red-flag"
+          name="Red Flag"
+          owner="red"
+          color="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-reset">
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">-105.5,6,46.5</post>
+    </flag>
+    <flags points="1">
+        <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
+        <net region="red-net" flag="blue-flag" respawn-filter="flag-respawns"/>
+    </flags>
+</flags>
+<score/>
+<spawners>
+    <spawner id="gapple-spawner" spawn-region="gap-spawn-drop" player-region="gap-spawn-activation" delay="5s">
+        <item material="golden apple"/>
+    </spawner>
+    <spawner id="blue-arrow-spawner" spawn-region="blue-spawn-drop" player-region="blue-spawn-activation" delay="8s">
+        <item amount="4" material="arrow"/>
+    </spawner>
+     <spawner id="red-arrow-spawner" spawn-region="red-spawn-drop" player-region="red-spawn-activation" delay="8s">
+        <item amount="4" material="arrow"/>
+    </spawner>
+</spawners>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<respawn delay="6s" auto="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>
