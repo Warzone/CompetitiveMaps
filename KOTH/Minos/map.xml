@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Minos</name>
-<version>1.0.4</version>
+<version>1.0.6</version>
 <objective>Be the first team to reach 750 points!</objective>
 <gamemode>koth</gamemode>
 <authors>
@@ -10,8 +10,8 @@
     <contributor uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e" contribution="Guidance and hand holding"/> <!-- Blazy -->
 </contributors>
 <teams>
-    <team id="blue-team" color="dark aqua" max="5">Blue</team>
-    <team id="red-team" color="dark red" max="5">Red</team>
+    <team id="blue-team" color="dark aqua" max="5" max-overfill="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -83,6 +83,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

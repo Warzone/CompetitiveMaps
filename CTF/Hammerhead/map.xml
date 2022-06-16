@@ -1,18 +1,15 @@
 <map proto="1.4.2">
 <name>Hammerhead</name>
-<version>1.4.6</version>
+<version>1.4.9</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <gamemode>ctf</gamemode>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </authors>
 <contributors>
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
 </contributors>
-<broadcasts>
-    <tip after="5s">Tunnels are now open for the whole match!</tip>
-</broadcasts>
 <teams>
     <team id="green" color="green" max="5" max-overfill="5">Green</team>
     <team id="purple" color="dark purple" max="5" max-overfill="5">Purple</team>
@@ -23,26 +20,20 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="14" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="3" amplifier="255">resistance</effect>
-    </kit>
-    <kit id="green-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="64FD42" material="leather helmet"/>
-        <chestplate unbreakable="true" color="64FD42" material="leather chestplate"/>
-    </kit>
-    <kit id="purple-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="7F3FB2" material="leather helmet"/>
-        <chestplate unbreakable="true" color="7F3FB2" material="leather chestplate"/>
+        <effect duration="3s" amplifier="255">resistance</effect>
     </kit>
     <kit id="flag-kit" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="reset-kit" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s" amplifier="0">slowness</effect>
     </kit>
 </kits>
 <spawns>
@@ -51,12 +42,12 @@
             <cuboid min="-108.5,20.25,139.5" max="-109.5,20.25,140.5"/>
         </region>
     </default>
-    <spawn team="green" kit="green-kit">
+    <spawn team="green" kit="spawn-kit">
         <region yaw="0">
             <point>-140.5,11.25,109.5</point>
         </region>
     </spawn>
-    <spawn team="purple" kit="purple-kit">
+    <spawn team="purple" kit="spawn-kit">
         <region yaw="90">
             <point>-78.5,11.25,171.5</point>
         </region>
@@ -142,6 +133,7 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
     <item>stone sword</item>
@@ -153,7 +145,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="8s" auto="true" blackout="true"/>
+<respawn delay="8s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

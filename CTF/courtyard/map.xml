@@ -2,6 +2,7 @@
 <name>Courtyard</name>
 <version>1.2.5</version>
 <objective>Capture the opponent's flags as many times as possible in 12 minutes!</objective>
+<gamemode>ctf</gamemode>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->

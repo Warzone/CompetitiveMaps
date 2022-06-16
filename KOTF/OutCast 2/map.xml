@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>OutCast 2</name>
-<version>1.5.13</version>
+<version>1.5.14</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <edition>tournament</edition>
@@ -112,9 +112,10 @@
     <item>chainmail leggings</item>
     <item>iron boots</item>
     <item>minecart</item>
-    <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

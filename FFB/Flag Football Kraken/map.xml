@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Flag Football: Kraken</name>
-<version>1.1.3</version>
+<version>1.1.7</version>
 <objective>Capture the flag as many times as possible in eight minutes!</objective>
 <gamemode>ffb</gamemode>
 <authors>
@@ -12,15 +12,16 @@
     <contributor uuid="0a359aef-794b-4d88-97ca-5672d9421532"/> <!-- xTrina -->
 </contributors>
 <teams>
-    <team id="red-team" color="dark red" max="5">Red</team>
-    <team id="blue-team" color="blue" max="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
+    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
         <item slot="0" material="stone sword" unbreakable="true"/>
         <item slot="1" material="bow" unbreakable="true"/>
-        <item slot="2" material="arrow" amount="16"/>
-        <leggings material="chainmail leggings" enchantment="protection projectile:1" unbreakable="true"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" material="arrow" amount="12"/>
+        <leggings material="chainmail leggings" enchantment="protection projectile:2" unbreakable="true"/>
         <boots material="iron boots" unbreakable="true"/>
         <game-mode>adventure</game-mode>
         <potion duration="9999" amplifier="255">night vision</potion>
@@ -52,7 +53,7 @@
     </default>
 </spawns>
 <respawn delay="5s"/>
-<flags>
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="flag" name="Flag" color="orange" shared="true" pickup-filter="above-or-below">
         <post id="center-post" recover-time="8s" respawn-time="4">
             <block>-11.5,16,198.5</block>
@@ -67,11 +68,8 @@
         <net points="1" region="red-spawn" capture-filter="only-red"/>
     </flag>
 </flags>
-<score>
-    <deaths>0</deaths>
-    <kills>0</kills>
-</score>
-<time>8m</time>
+<score/>
+<time result="score" overtime="1m" max-overtime="5m">8m</time>
 <filters>
     <team id="only-red">red-team</team>
     <team id="only-blue">blue-team</team>
@@ -125,8 +123,8 @@
     <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-team-carrying-flag" notify="blue-team-carrying-flag"/>
 </proximity-alarms>
 <portals>
-    <portal filter="red-team-carrying-flag" region="red-net" destination="red-spawn-point" yaw="@180"/>
-    <portal filter="blue-team-carrying-flag" region="blue-net" destination="blue-spawn-point" yaw="@0"/>
+    <portal observers="never" filter="red-team-carrying-flag" region="red-net" destination="red-spawn-point" yaw="@180"/>
+    <portal observers="never" filter="blue-team-carrying-flag" region="blue-net" destination="blue-spawn-point" yaw="@0"/>
 </portals>
 <toolrepair>
     <item>stone sword</item>
@@ -141,7 +139,7 @@
 <kill-rewards>
     <kill-reward>
         <item material="golden apple"/>
-        <item material="arrow" amount="6"/>
+        <item material="arrow" amount="3"/>
     </kill-reward>
 </kill-rewards>
 <disabledamage>
