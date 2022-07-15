@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
-<name>The Ugly Barnacle</name>
+<name>The Ugly Barnacle TE</name>
 <version>1.0.1</version>
 <objective>Capture the enemy team's two wools.</objective>
 <gamemode>ctw</gamemode>
