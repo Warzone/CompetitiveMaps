@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.2">
 <time overtime="30s">5m</time>
-<name>No Return</name>
+<name>No Return TE</name>
 <version>2.1.6</version>
 <objective>Eliminate the other team.</objective>
 <gamemode>blitz</gamemode>
