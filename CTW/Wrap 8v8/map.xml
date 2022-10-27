@@ -7,8 +7,8 @@
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!--  DoomyBoy  -->
 </authors>
 <teams>
-    <team id="red" color="dark red" max="8" max-overfill="8">Red</team>
-    <team id="blue" color="blue" max="8" max-overfill="8">Blue</team>
+    <team id="red" color="dark red" max="8">Red</team>
+    <team id="blue" color="blue" max="8">Blue</team>
 </teams>
 <time result="objectives">20m</time>
 <kits>
